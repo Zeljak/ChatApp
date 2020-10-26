@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import ListOfMessages from "./Components/ListOfMessages";
 import './App.css';
 import { randomColor, randomName } from "./Components/UserName";
+import Input from "./Components/Input";
 
 export default class App extends Component {
   constructor(props) {
