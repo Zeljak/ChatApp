@@ -15,13 +15,38 @@ export default class App extends Component {
         username: randomName(),
         color: randomColor()
       }
+    };
+
+//SCALEDRONE INTEGRATION
+
+  this.drone = new window.Scaledrone("JcKhdhgCGn0R0kCL", {
+    data: this.state.member
+  });
+  this.drone.on('open', error => {
+    if (error) {
+      return console.error(error);
     }
+    const member = {...this.state.member};
+    member.id = this.drone.clientId;
+    this.setState({member});
+  });
 
+  const room = this.drone.subscribe("observable-room");
+  room.on('data', (data, member) => {
+    const messages = this.state.messages;
+    messages.push({member, text: data});
+    this.setState({messages});
+  });
+}
 
-
+onSendMessage = (message) => {
+this.drone.publish ({
+  room: "observable-room",
+  message});
+};
 
     
-  }
+  
 
   
   render(){
