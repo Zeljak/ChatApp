@@ -46,15 +46,12 @@ this.drone.publish ({
 };
 
     
-  
-
-  
   render(){
   return (
     <div className="App">
       <div className="App-header">
         <img className="image" src={Image} alt="chat logo"/>
-
+        </div>
         <ListOfMessages
         messages={this.state.messages}
         currentMember={this.state.member}/>
@@ -62,7 +59,7 @@ this.drone.publish ({
         <Input
         onSendMessage={this.onSendMessage}/>
         
-      </div>
+     
     </div>
   );
 }

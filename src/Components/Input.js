@@ -9,15 +9,17 @@ export default class Input extends Component {
         };
     }
 
+    handleTextChange = (e) => {
+        this.setState({text: e.target.value});
+    };
+
     handleSendMessage = (e) => {
         e.preventDefault();
         this.props.onSendMessage(this.state.text);
         this.setState({text: ""});
-    }
+    };
 
-    handleTextChange = (e) => {
-        this.setState({text: e.target.value});
-    }
+   
 
     render(){
         return(
